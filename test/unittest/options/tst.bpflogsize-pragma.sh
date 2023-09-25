@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Oracle Linux DTrace.
-# Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
 # Licensed under the Universal Permissive License v 1.0 as shown at
 # http://oss.oracle.com/licenses/upl.
 #
@@ -76,7 +76,7 @@ while [ $cursiz -lt $((1024 * 1024 * 1024)) ]; do
 	# Usually (at least in the default case),
 	# dtrace should fail because the BPF log size is too small.
 	# Output should match D.out.
-	if [ `sed s/$cursiz/nnnn/ tmp.out | diff - D.out | wc -l` -eq 0 ]; then
+	if [ `tail -100 tmp.out | sed s/$cursiz/nnnn/ | diff - D.out | wc -l` -eq 0 ]; then
 		echo okay: $cursiz is too small
 
 		# bump the size up and try again
