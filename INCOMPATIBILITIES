@@ -1,6 +1,6 @@
 This file documents known incompatibilities between Linux and Solaris dtrace,
 together with the difficulty of overcoming them, and the likelihood that they
-will be overcome...
+will be overcome.
 
 
 Missing providers
